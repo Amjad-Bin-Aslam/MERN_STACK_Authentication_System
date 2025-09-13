@@ -14,11 +14,14 @@ const PORT = process.env.PORT || 4000;
 
 mongoose.connect(process.env.MONGODB_URL).then( (e) => console.log("MongoDB Connected") )
 
+
+const allowedOrigins = ['http://localhost:5173']
+    
 app.use(express.json());
 app.use(cookieParser()); 
-app.use(cors({ credentials: true }));
+app.use(cors({ origin: allowedOrigins ,  credentials: true }));
 
- 
+  
 // Api end point
 app.get("/" , (req, res) => { res.send("API working") });
 
