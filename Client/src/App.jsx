@@ -10,14 +10,13 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function App() {
   return (
     <div>
-      <ToastContainer>
       <Routes>
         <Route path='/' element={ <Home /> }></Route>
         <Route path='/login' element={ <Login /> }></Route>
         <Route path='/email-verify' element={ <EmailVerify /> }></Route>
         <Route path='/reset-password' element={ <ResetPassword /> }></Route>
       </Routes>
-      </ToastContainer>
+      <ToastContainer/>
     </div>
   )
 }

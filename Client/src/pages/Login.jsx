@@ -10,12 +10,12 @@ function Login() {
 
   const navigate = useNavigate()   
 
-  const {backendUrl , setIsLoggedIn} = useContext(AppContext)
+  const {backendUrl , setIsLoggedIn , getUserData} = useContext(AppContext)
 
   const [state, setState] = useState('Sign Up')
-  const [name , setName] = useState('')
-  const [email , setEmail] = useState('')
-  const [password , setPassword] = useState('')
+  const [name , setName] = useState("")
+  const [email , setEmail] = useState("")
+  const [password , setPassword] = useState("")
 
   const onSubmitHandler = async (e) => {
     try {
@@ -29,6 +29,7 @@ function Login() {
 
         if(data.success){
           setIsLoggedIn(true)
+          getUserData()
           navigate("/")
         }else{
           toast.error(data.message)
@@ -40,9 +41,10 @@ function Login() {
 
         if(data.success){
           setIsLoggedIn(true)
+          getUserData()
           navigate("/")
         }else{
-          toast.error(data.message)
+          toast.error(Error.message)
         }
       }
 
@@ -52,8 +54,7 @@ function Login() {
   } else {
     toast.error(error.message);
   }
-}
-  
+ }
 }
 
   return (
@@ -126,12 +127,12 @@ function Login() {
         </form>
 
         {state === 'Sign Up' ? (
-           <p className='text-gray-400 text-center text-xs mt-4'>Already have an account? &nbsp;
+           <p className='text-gray-400 text-center text-xs mt-4'>Already have an account? {'  '}
           <span onClick={() => setState('Login')} className='text-blue-400 cursor-pointer underline'>Login here</span>
         </p> 
         ) 
         : (
-          <p className='text-gray-400 text-center text-xs mt-4'>Don't have an account? &nbsp;
+          <p className='text-gray-400 text-center text-xs mt-4'>Don't have an account? {'  '}
           <span onClick={() => setState('Sign Up')} className='text-blue-400 cursor-pointer underline'>Sign Up</span>
         </p>
         )}
