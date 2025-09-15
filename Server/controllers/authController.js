@@ -200,7 +200,7 @@ export const sendVerifyOtp = async (req , res) => {
 export const verifyEmailOtp = async (req , res) =>{
     
      const { otp } = req.body;
-     const userId = req.userId
+     const userId = req.userId;
 
     if(!userId || !otp){
         return res.status(404).json({ success: false , message: "Missing details" })
@@ -249,7 +249,7 @@ export const isAuthenticated =  async (req , res) => {
     } catch (error) {
          return res.status(404).json({ success: false , message: error.message })
     }
-}
+} 
 
 
 
